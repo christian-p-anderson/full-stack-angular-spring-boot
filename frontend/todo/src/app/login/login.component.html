@@ -1,1 +1,11 @@
-<p>login works!</p>
+<span>  User Name : </span>
+<label>
+  <input type="text" name="username" [(ngModel)]="username">
+<!--  [(ngModel)] = "" implements two-way data binding you need to also import Forms into app.module.ts for this to work-->
+</label>
+<span>  Password: </span>
+<label>
+  <input type="password" name="password" [(ngModel)]="password">
+</label>
+
+<button (click) = handleLogin() >Login</button>
