@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   // tslint:disable-next-line:typedef
   handleLogin() {
     if (this.username === 'in28minutes' && this.password === 'dummy') {
-      this.router.navigate(['welcome']); // This line redirects to the Welcome page, need to pass it through the Constructor
+      this.router.navigate(['welcome', this.username]); // This line redirects to the Welcome page, need to pass it through the Constructor
       // navigate indicates the page you want to route into
       this.invalidLogin = false;
     } else {
