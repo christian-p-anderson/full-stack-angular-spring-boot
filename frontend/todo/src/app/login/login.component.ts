@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {HardcodedAuthenticationService} from '../service/hardcoded-authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -16,15 +17,16 @@ export class LoginComponent implements OnInit {
   // Router
   // Dependency Injection - a built in feature that can be used for routing
 
-  constructor(private router: Router) { } // in typescript if you pass something as a constructor argument then by
-  // default this makes it available as a member variable
+  constructor(private router: Router,
+              private hardcodedAuthenticationService: HardcodedAuthenticationService) { }
+  // in typescript if you pass something as a constructor argument then by default this makes it available as a member variable
 
   ngOnInit(): void {
   }
 
   // tslint:disable-next-line:typedef
   handleLogin() {
-    if (this.username === 'in28minutes' && this.password === 'dummy') {
+    if (this.hardcodedAuthenticationService.authenticate(this.username, this.password)) {
       this.router.navigate(['welcome', this.username]); // This line redirects to the Welcome page, need to pass it through the Constructor
       // navigate indicates the page you want to route into
       this.invalidLogin = false;
