@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,17 +10,29 @@ export class LoginComponent implements OnInit {
 
   username = 'in28minutes';
   password = '';
+  errorMessage = 'Invalid Credentials';
+  invalidLogin = false;
 
-  constructor() {
-  }
+  // Router
+  // Dependency Injection - a built in feature that can be used for routing
+
+  constructor(private router: Router) { } // in typescript if you pass something as a constructor argument then by
+  // default this makes it available as a member variable
 
   ngOnInit(): void {
   }
 
   // tslint:disable-next-line:typedef
   handleLogin() {
-    console.log(this.username);
-    console.log(this.password);
+    if (this.username === 'in28minutes' && this.password === 'dummy') {
+      this.router.navigate(['welcome']); // This line redirects to the Welcome page, need to pass it through the Constructor
+      // navigate indicates the page you want to route into
+      this.invalidLogin = false;
+    } else {
+      this.invalidLogin = true;
+    }
+    // console.log(this.username);
+    // console.log(this.password);
   }
 }
 // Three kinds of data binding
