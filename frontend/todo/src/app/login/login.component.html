@@ -1,16 +1,20 @@
-<small *ngIf="invalidLogin">{{errorMessage}}</small>
-<!--*ngIf allows the use of the invalidLogin() method in the .ts file-->
+<h1>Login!</h1>
 
-<div>
-  <span>  User Name: </span>
-  <label>
-    <input type="text" name="username" [(ngModel)]="username">
-  <!--  [(ngModel)] = "" implements two-way data binding you need to also import Forms into app.module.ts for this to work-->
-  </label>
-  <span>  Password: </span>
-  <label>
-    <input type="password" name="password" [(ngModel)]="password">
-</label>
+<div class="container-fluid">
+  <div class="alert alert-warning" *ngIf="invalidLogin">{{errorMessage}}</div>
+  <!--*ngIf allows the use of the invalidLogin() method in the .ts file-->
 
-<button (click) = handleLogin() >Login</button>
+  <div>
+    <span>  User Name: </span>
+    <label>
+      <input type="text" name="username" [(ngModel)]="username">
+      <!--  [(ngModel)] = "" implements two-way data binding you need to also import Forms into app.module.ts for this to work-->
+    </label>
+    <span>  Password: </span>
+    <label>
+      <input type="password" name="password" [(ngModel)]="password">
+    </label>
+
+    <button class="btn btn-success" (click)=handleLogin()>Login</button>
+  </div>
 </div>
