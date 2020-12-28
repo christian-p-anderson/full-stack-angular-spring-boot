@@ -21,4 +21,8 @@ export class HardcodedAuthenticationService {
     const user = sessionStorage.getItem('authenticatedUser');
     return !(user === null);
   }
+  // tslint:disable-next-line:typedef
+  logout() {
+    sessionStorage.removeItem('authenticatedUser');
+  }
 }
