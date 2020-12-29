@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
+export class HelloWorldBean {
+  constructor(public message: string) {}
+}
+// create class to show what you are expecting back
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +17,6 @@ export class WelcomeDataService {
   ) { }
   // tslint:disable-next-line:typedef
   executeHelloWorldBeanService() {
-    return this.http.get('http://localhost:8080/hello-world-bean');
-    // console.log('Execute Hello World Bean Service');
+    return this.http.get<HelloWorldBean>('http://localhost:8080/hello-world-bean');
   }
 }

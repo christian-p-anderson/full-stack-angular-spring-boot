@@ -9,6 +9,7 @@ import {WelcomeDataService} from '../service/data/welcome-data.service';
 })
 export class WelcomeComponent implements OnInit {
   message = 'Some Welcome Message';
+  welcomeMessageFromService: string | undefined;
   name = '';
   constructor(
     private route: ActivatedRoute,
@@ -22,6 +23,13 @@ export class WelcomeComponent implements OnInit {
   // tslint:disable-next-line:typedef
   getWelcomeMessage() {
     console.log(this.service.executeHelloWorldBeanService());
-    // console.log('get welcome message');
+    this.service.executeHelloWorldBeanService().subscribe(
+      response => this.handleSuccessfulResponse(response)
+    );
+    // this is what allows you to link to the url. As soon as you subscribe to the observable the request is executed
+    // subscribe is an asynchronous call, so you can indicate what needs to be done after the data comes back
+  }
+  handleSuccessfulResponse: any = (response: any) => {
+    this.welcomeMessageFromService = response.message;
   }
 }
