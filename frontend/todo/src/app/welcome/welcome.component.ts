@@ -9,7 +9,7 @@ import {WelcomeDataService} from '../service/data/welcome-data.service';
 })
 export class WelcomeComponent implements OnInit {
   message = 'Some Welcome Message';
-  welcomeMessageFromService: string | undefined;
+  welcomeMessageFromService: string | undefined; // creates a field
   name = '';
   constructor(
     private route: ActivatedRoute,
@@ -17,12 +17,10 @@ export class WelcomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // console.log(this.route.snapshot.params.name);
     this.name = this.route.snapshot.params.name;
   }
   // tslint:disable-next-line:typedef
   getWelcomeMessage() {
-    console.log(this.service.executeHelloWorldBeanService());
     this.service.executeHelloWorldBeanService().subscribe(
       response => this.handleSuccessfulResponse(response)
     );
