@@ -22,12 +22,17 @@ export class WelcomeComponent implements OnInit {
   // tslint:disable-next-line:typedef
   getWelcomeMessage() {
     this.service.executeHelloWorldBeanService().subscribe(
-      response => this.handleSuccessfulResponse(response)
+      response => this.handleSuccessfulResponse(response),
+      error => this.handleErrorResponse(error)
     );
     // this is what allows you to link to the url. As soon as you subscribe to the observable the request is executed
     // subscribe is an asynchronous call, so you can indicate what needs to be done after the data comes back
+    // error defines how to handle an error
   }
   handleSuccessfulResponse: any = (response: any) => {
     this.welcomeMessageFromService = response.message;
+  }
+  handleErrorResponse: any = (error: any) => {
+    this.welcomeMessageFromService = error.error.message;
   }
 }

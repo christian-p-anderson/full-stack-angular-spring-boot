@@ -20,6 +20,7 @@ public class HelloWorldController {
     //hello-world-bean
     @GetMapping("hello-world-bean")
     public HelloWorldBean helloWorldBean() {
+//        throw new RuntimeException("Some Error has Happened! Contact Support at ***-****");
         return new HelloWorldBean("Hello World - Changed");
     }
 
