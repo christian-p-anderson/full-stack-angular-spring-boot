@@ -20,8 +20,8 @@ export class WelcomeComponent implements OnInit {
     this.name = this.route.snapshot.params.name;
   }
   // tslint:disable-next-line:typedef
-  getWelcomeMessage() {
-    this.service.executeHelloWorldBeanService().subscribe(
+  getWelcomeMessageWithParameter() {
+    this.service. executeHelloWorldServiceWithPathVariable(this.name).subscribe(
       response => this.handleSuccessfulResponse(response),
       error => this.handleErrorResponse(error)
     );
