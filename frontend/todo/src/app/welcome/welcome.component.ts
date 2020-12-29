@@ -21,7 +21,7 @@ export class WelcomeComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   getWelcomeMessage() {
-    this.service.executeHelloWorldBeanService();
+    console.log(this.service.executeHelloWorldBeanService());
     // console.log('get welcome message');
   }
 }
