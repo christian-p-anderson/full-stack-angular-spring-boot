@@ -18,7 +18,7 @@ export class Todo {
 })
 export class ListTodosComponent implements OnInit {
 
-  todos: Todo[] | undefined;
+  todos: Todo[] = [];
   //   = [
   //   new Todo(1, 'Learn to Dance', false, new Date()),
   //   new Todo(2, 'Become an Expert at Angular', false, new Date()),
