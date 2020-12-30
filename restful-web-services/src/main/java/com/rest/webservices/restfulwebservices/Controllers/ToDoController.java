@@ -3,6 +3,7 @@ package com.rest.webservices.restfulwebservices.Controllers;
 import com.rest.webservices.restfulwebservices.Models.Todo;
 import com.rest.webservices.restfulwebservices.Services.TodoHardcodedService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,5 +35,19 @@ public class ToDoController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    // Edit / update a Todo
+    // PUT /users/{user_name}/todos/{todo_id}
+
+    @PutMapping("users/{username}/todos/{id}")
+    public ResponseEntity<Todo> updateToDo(
+            @PathVariable String username,
+            @PathVariable long id, @RequestBody Todo todo) {
+        Todo todoUpdated = todoService.save(todo);
+        return new ResponseEntity<Todo>(todo, HttpStatus.OK);
+    }
+
+    // Create a new Todo
+    // POST /users/{user_name}/todos/
 
 }

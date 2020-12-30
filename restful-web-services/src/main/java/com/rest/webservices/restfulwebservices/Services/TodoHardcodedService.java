@@ -23,6 +23,22 @@ public class TodoHardcodedService {
         return todos;
     }
 
+    /**
+     *
+     * if the todo item does not exist then add it to the array list, if it does exist delete what's there and add in the revised todo
+     * need to figure out the best way to approach a backend database
+     */
+    public Todo save(Todo todo) {
+        if (todo.getId() == -1) {
+            todo.setId(++idCounter);
+            todos.add(todo);
+        } else {
+            deleteById(todo.getId());
+            todos.add(todo);
+        }
+        return todo;
+    }
+
     public Todo deleteById(long id) {
         Todo todo = findById(id);
         if(todo == null) return null;
