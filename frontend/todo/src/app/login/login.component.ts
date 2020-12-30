@@ -23,9 +23,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  // tslint:disable-next-line:typedef
-  handleLogin() {
+  handleLogin(): void {
     if (this.hardcodedAuthenticationService.authenticate(this.username, this.password)) {
       this.router.navigate(['welcome', this.username]); // This line redirects to the Welcome
       // page, need to pass router through the Constructor

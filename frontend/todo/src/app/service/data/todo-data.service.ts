@@ -10,9 +10,12 @@ export class TodoDataService {
 
   constructor(private http: HttpClient) {
   }
-  // @ts-ignore
   // tslint:disable-next-line:typedef
   retrieveAllTodos(username) {
     return this.http.get<Todo[]>(`http://localhost:8080/users/${username}/todos`);
+  }
+  // tslint:disable-next-line:typedef
+  deleteTodo(username: any, id: any) {
+    return this.http.delete(`http://localhost:8080/users/${username}/todos/${id}`);
   }
 }

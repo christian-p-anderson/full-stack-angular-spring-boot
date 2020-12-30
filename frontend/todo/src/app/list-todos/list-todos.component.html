@@ -1,5 +1,7 @@
 <h1> My Todo's </h1>
 
+<div class="alert alert-success" *ngIf="message">{{message}}</div>
+
 <div class="container-fluid">
   <table class="table">
     <thead>
@@ -7,7 +9,7 @@
       <th>Description</th>
       <th>Target Date</th>
       <th>Is Completed?</th>
-      <th>Delete</th>
+      <th>Actions</th>
     </tr>
     </thead>
 
