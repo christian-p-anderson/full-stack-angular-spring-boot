@@ -18,17 +18,15 @@ export class Todo {
 })
 export class ListTodosComponent implements OnInit {
 
-  todos: Todo[] = [];
-  //   = [
-  //   new Todo(1, 'Learn to Dance', false, new Date()),
-  //   new Todo(2, 'Become an Expert at Angular', false, new Date()),
-  //   new Todo(3, 'Visit India', false, new Date())
-  // ];
+  // @ts-ignore
+  todos: Todo[];
+
   constructor(
     private toDoService: TodoDataService
   ) { }
 
-  ngOnInit(): void {
+  // tslint:disable-next-line:typedef
+  ngOnInit() {
     // @ts-ignore
     this.todos = this.toDoService.retrieveAllTodos('in28minutes').subscribe(
       response => {
@@ -36,6 +34,10 @@ export class ListTodosComponent implements OnInit {
         this.todos = response;
       }
     );
+  }
+  // tslint:disable-next-line:typedef
+  deleteTodo(id: any) {
+    console.log(`delete Todo ${id}`);
   }
 
 }

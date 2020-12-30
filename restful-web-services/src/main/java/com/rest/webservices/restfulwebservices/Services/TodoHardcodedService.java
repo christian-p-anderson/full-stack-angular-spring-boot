@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class TodoHardcodedService {
 
-    private static List<Todo> todos = new ArrayList<>();
+    private static final List<Todo> todos = new ArrayList<>();
     private static int idCounter = 0;
 
     static {
@@ -20,7 +20,7 @@ public class TodoHardcodedService {
     }
 
     public List<Todo> findAll() {
-        return this.todos;
+        return todos;
     }
 
     public Todo deleteById(long id) {
@@ -28,7 +28,7 @@ public class TodoHardcodedService {
         if(todo == null) return null;
         if (todos.remove(todo)) {
             return todo;
-        };
+        }
         return null;
     }
 
