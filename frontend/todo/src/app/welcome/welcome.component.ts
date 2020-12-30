@@ -17,7 +17,7 @@ export class WelcomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.name = this.route.snapshot.params.name;
+    this.name = this.route.snapshot.params[`name`];
   }
   // tslint:disable-next-line:typedef
   getWelcomeMessageWithParameter() {

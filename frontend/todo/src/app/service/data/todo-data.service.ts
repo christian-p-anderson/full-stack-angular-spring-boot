@@ -18,4 +18,8 @@ export class TodoDataService {
   deleteTodo(username: any, id: any) {
     return this.http.delete(`http://localhost:8080/users/${username}/todos/${id}`);
   }
+  // tslint:disable-next-line:typedef
+  retrieveTodo(username: any, id: any) {
+    return this.http.get<Todo>(`http://localhost:8080/users/${username}/todos/${id}`);
+  }
 }

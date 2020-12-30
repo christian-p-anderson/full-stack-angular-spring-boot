@@ -2,7 +2,7 @@
 
 <div class="alert alert-success" *ngIf="message">{{message}}</div>
 
-<div class="container-fluid">
+<div class="container">
   <table class="table">
     <thead>
     <tr>
@@ -14,7 +14,6 @@
 
     </tr>
     </thead>
-
     <tbody>
     <!--   the *ngFor below is java equivalent is: for (Todo todo: todos) {} -->
     <tr *ngFor="let todo of todos">
@@ -24,6 +23,8 @@
       <td>{{todo.done}}</td>
       <td>
         <button (click)="updateTodo(todo.id)" class="btn btn-success">Update</button>
+      </td>
+      <td>
         <button (click)="deleteTodo(todo.id)" class="btn btn-warning">Delete</button>
       </td>
     </tr>

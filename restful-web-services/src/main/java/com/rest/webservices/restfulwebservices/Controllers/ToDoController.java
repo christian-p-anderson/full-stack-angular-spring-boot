@@ -20,6 +20,11 @@ public class ToDoController {
         return todoService.findAll();
     }
 
+    @GetMapping("/users/{username}/todos/{id}")
+    public Todo getTodo(@PathVariable String username, @PathVariable long id) {
+        return todoService.findById(id);
+    }
+
     // DELETE /users/{username}/todos/{id}
     @DeleteMapping("users/{username}/todos/{id}")
     public ResponseEntity<Void> deleteToDo(@PathVariable String username, @PathVariable long id) {
