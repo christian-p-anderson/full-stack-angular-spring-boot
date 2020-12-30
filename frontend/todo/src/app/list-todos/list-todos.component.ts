@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TodoDataService} from '../service/data/todo-data.service';
+import {Router} from '@angular/router';
 
 // you can insert as many classes into the .ts file because it's a JS file
 export class Todo {
@@ -22,7 +23,8 @@ export class ListTodosComponent implements OnInit {
   message: string;
 
   constructor(
-    private toDoService: TodoDataService
+    private toDoService: TodoDataService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -47,5 +49,10 @@ export class ListTodosComponent implements OnInit {
         this.refreshTodos();
       }
     );
+  }
+
+  updateTodo(id): void {
+    console.log(`update ${id}`);
+    this.router.navigate(['todos', id]);
   }
 }

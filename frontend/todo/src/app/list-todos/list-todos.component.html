@@ -9,7 +9,9 @@
       <th>Description</th>
       <th>Target Date</th>
       <th>Is Completed?</th>
-      <th>Actions</th>
+      <th>Update</th>
+      <th>Delete</th>
+
     </tr>
     </thead>
 
@@ -21,6 +23,7 @@
       <!--  use pipe "|" to convert the format  -->
       <td>{{todo.done}}</td>
       <td>
+        <button (click)="updateTodo(todo.id)" class="btn btn-success">Update</button>
         <button (click)="deleteTodo(todo.id)" class="btn btn-warning">Delete</button>
       </td>
     </tr>
