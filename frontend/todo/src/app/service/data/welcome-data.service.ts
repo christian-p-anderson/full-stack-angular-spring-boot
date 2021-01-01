@@ -19,14 +19,10 @@ export class WelcomeDataService {
   ) {
   }
 
-  // tslint:disable-next-line:typedef
-  executeHelloWorldBeanService() {
-    return this.http.get<HelloWorldBean>('http://localhost:8080/hello-world-bean');
-  }
+  executeHelloWorldBeanService = () => this.http.get<HelloWorldBean>('http://localhost:8080/hello-world-bean');
 
   // Step 77
-  // tslint:disable-next-line:typedef
-  executeHelloWorldServiceWithPathVariable(name: any) {
+  executeHelloWorldServiceWithPathVariable = (name: any) => {
     const basicAuthHeaderString = this.createBasicAuthenticationHttpHeader();
     const headers = new HttpHeaders({
       Authorization: basicAuthHeaderString
@@ -36,9 +32,7 @@ export class WelcomeDataService {
         headers
       });
   }
-
-  // tslint:disable-next-line:typedef
-  createBasicAuthenticationHttpHeader() {
+  createBasicAuthenticationHttpHeader = () => {
     const username = 'in28minutes';
     const password = 'dummy';
     const basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
