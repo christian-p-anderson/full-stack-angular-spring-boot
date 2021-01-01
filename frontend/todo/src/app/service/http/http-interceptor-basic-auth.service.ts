@@ -1,0 +1,25 @@
+// this service allows us to add a specific header to each request, so that we can access the backend with a username and password
+import {Injectable} from '@angular/core';
+import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {Observable} from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class HttpInterceptorBasicAuthService implements HttpInterceptor {
+
+  constructor() {
+  }
+  // tslint:disable-next-line:typedef
+  intercept(request: HttpRequest<any>, next: HttpHandler) {
+    const username = 'in28minutes';
+    const password = 'dummy';
+    const basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
+    request = request.clone({
+      setHeaders: {
+        Authorization: basicAuthHeaderString
+      }
+    });
+    return next.handle(request);
+  } // we are intercepting the request, adding an authorization header, and sending it to the next http handler Step 76
+}
