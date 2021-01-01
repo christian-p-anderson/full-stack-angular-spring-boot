@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {HelloWorldBean} from './data/welcome-data.service';
@@ -11,13 +11,7 @@ export class BasicAuthenticationService {
 
   constructor(
     private http: HttpClient
-  ) { }
-  authenticate = (username: string, password: string) => {
-    if (username === 'in28minutes' && password === 'dummy') {
-      sessionStorage.setItem('authenticatedUser', username); // stores information in browser's session storage
-      return true;
-    }
-    return false;
+  ) {
   }
   executeAuthenticationService = (username: string, password: string) => {
     const basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
@@ -28,14 +22,23 @@ export class BasicAuthenticationService {
       `http://localhost:8080/basicauth`, {
         headers
       }
-      ).pipe( // pipe method says if it succeeds do this
-        map(
-          response => {
-            sessionStorage.setItem('authenticatedUser', username);
-            return response;
-          }
-        )
+    ).pipe( // pipe method says if it succeeds do this
+      map(
+        response => {
+          sessionStorage.setItem('authenticatedUser', username);
+          sessionStorage.setItem('token', basicAuthHeaderString);
+          return response;
+        }
+      )
     );
+  }
+  getAuthenticatedUser = () => {
+    return sessionStorage.getItem('authenticatedUser');
+  }
+  getAuthenticatedToken = () => {
+    if (this.getAuthenticatedUser()) {
+      return sessionStorage.getItem('token');
+    }
   }
   isUserLoggedIn = () => {
     const user = sessionStorage.getItem('authenticatedUser');
@@ -43,9 +46,11 @@ export class BasicAuthenticationService {
   }
   logout = () => {
     sessionStorage.removeItem('authenticatedUser');
+    sessionStorage.removeItem('token');
   }
 }
 
 export class AuthenticationBean {
-  constructor(public message: string) {}
+  constructor(public message: string) {
+  }
 }

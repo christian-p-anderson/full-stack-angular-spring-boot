@@ -21,7 +21,7 @@ export class WelcomeComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   getWelcomeMessageWithParameter() {
-    this.service. executeHelloWorldServiceWithPathVariable(this.name).subscribe(
+    this.service.executeHelloWorldServiceWithPathVariable(this.name).subscribe(
       response => this.handleSuccessfulResponse(response),
       error => this.handleErrorResponse(error)
     );

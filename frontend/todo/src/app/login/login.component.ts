@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   // Dependency Injection - a built in feature that can be used for routing
 
   constructor(private router: Router,
-              private hardcodedAuthenticationService: HardcodedAuthenticationService,
+              // private hardcodedAuthenticationService: HardcodedAuthenticationService,
               private basicAuthenticationService: BasicAuthenticationService) {
   }
 
@@ -28,16 +28,16 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  handleLogin = () => {
-    if (this.hardcodedAuthenticationService.authenticate(this.username, this.password)) {
-      this.router.navigate(['welcome', this.username]); // This line redirects to the Welcome
-      // page, need to pass router through the Constructor
-      // navigate indicates the page you want to route into
-      this.invalidLogin = false;
-    } else {
-      this.invalidLogin = true;
-    }
-  }
+  // handleLogin = () => {
+  //   if (this.hardcodedAuthenticationService.authenticate(this.username, this.password)) {
+  //     this.router.navigate(['welcome', this.username]); // This line redirects to the Welcome
+  //     // page, need to pass router through the Constructor
+  //     // navigate indicates the page you want to route into
+  //     this.invalidLogin = false;
+  //   } else {
+  //     this.invalidLogin = true;
+  //   }
+  // }
   handleBasicAuthLogin = () => {
       // console.log(this.username);
       // if(this.username==="in28minutes" && this.password === 'dummy') {

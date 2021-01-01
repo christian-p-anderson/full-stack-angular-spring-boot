@@ -23,21 +23,23 @@ export class WelcomeDataService {
 
   // Step 77
   executeHelloWorldServiceWithPathVariable = (name: any) => {
-    const basicAuthHeaderString = this.createBasicAuthenticationHttpHeader();
-    const headers = new HttpHeaders({
-      Authorization: basicAuthHeaderString
-    });
-    return this.http.get<HelloWorldBean>(`http://localhost:8080/hello-world/path-variable/${name}`,
-      {
-        headers
-      });
+    // const basicAuthHeaderString = this.createBasicAuthenticationHttpHeader();
+    // const headers = new HttpHeaders({
+    //   Authorization: basicAuthHeaderString
+    // });
+    return this.http.get<HelloWorldBean>(`http://localhost:8080/hello-world/path-variable/${name}`
+      // ,
+      // {
+      //   headers
+      // }
+      );
   }
-  createBasicAuthenticationHttpHeader = () => {
-    const username = 'in28minutes';
-    const password = 'dummy';
-    const basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
-    return basicAuthHeaderString;
-  }
+  // createBasicAuthenticationHttpHeader = () => {
+  //   const username = 'in28minutes';
+  //   const password = 'dummy';
+  //   const basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
+  //   return basicAuthHeaderString;
+  // }
 
 //  Access to XMLHttpRequest at
 //  http://localhost:8080/hello-world/path-variable/in28minutes
