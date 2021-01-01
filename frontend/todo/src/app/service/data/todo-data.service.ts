@@ -26,4 +26,8 @@ export class TodoDataService {
   updateTodo(username: any, id: any, todo) {
     return this.http.put<Todo>(`http://localhost:8080/users/${username}/todos/${id}`, todo);
   }
+  // tslint:disable-next-line:typedef
+  createTodo(username: any, todo) {
+    return this.http.post<Todo>(`http://localhost:8080/users/${username}/todos/`, todo);
+  }
 }
