@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HelloWorldBean} from './welcome-data.service';
+// import {HelloWorldBean} from './welcome-data.service';
 import {HttpClient} from '@angular/common/http';
 import {Todo} from '../../list-todos/list-todos.component';
 import {API_URL} from '../../app.constants';
